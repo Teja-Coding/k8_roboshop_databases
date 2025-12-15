@@ -1,6 +1,4 @@
-#service, headless service, statefulset,pvc
-
-#Here is the normal service
+# service, headless service, statefulset, pvc
 apiVersion: v1
 kind: Service
 metadata:
@@ -15,16 +13,14 @@ spec:
     - protocol: TCP
       port: 27017 # service port
       targetPort: 27017 # container port
-
 ---
-#Here is headless service
 apiVersion: v1
 kind: Service
 metadata:
   name: mongodb-headless
   namespace: roboshop
 spec:
-  clusterIp: None
+  clusterIP: None
   selector:
     project: roboshop
     component: mongodb
